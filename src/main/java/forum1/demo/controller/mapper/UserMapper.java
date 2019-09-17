@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserMapper {
 
-    @Insert("insert into user (account_Id,name,token,gmt_Creat,gmt_Modified) values (#{account_Id},#{name},#{token},#{gmt_Creat},#{gmt_Modified})")
+    @Insert("insert into user (account_Id,name,token,gmt_Creat,gmt_Modified,avatar_Url) values (#{account_Id},#{name},#{token},#{gmt_Creat},#{gmt_Modified},#{avatar_Url})")
     public void  insert(User user);
 
     @Select("select *from user where token=#{token}")

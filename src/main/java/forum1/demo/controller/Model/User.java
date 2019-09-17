@@ -8,6 +8,15 @@ public class User {
     private String token;
     private Long gmt_Creat;
     private Long gmt_Modified;
+    private String avatar_Url;
+
+    public String getAvatar_Url() {
+        return avatar_Url;
+    }
+
+    public void setAvatar_Url(String avatar_Url) {
+        this.avatar_Url = avatar_Url;
+    }
 
     public Integer getId() {
         return id;
