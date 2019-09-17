@@ -17,4 +17,5 @@ public interface UserMapper {
 
     @Select("select *from user where token=#{token}")
     public User findToken(@Param("token") String token);
+
 }
