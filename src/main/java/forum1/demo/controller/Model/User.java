@@ -3,20 +3,12 @@ package forum1.demo.controller.Model;
 public class User {
 
     private Integer id;
-    private String account_Id;
+    private String accountId;
     private String name;
     private String token;
-    private Long gmt_Creat;
-    private Long gmt_Modified;
-    private String avatar_Url;
-
-    public String getAvatar_Url() {
-        return avatar_Url;
-    }
-
-    public void setAvatar_Url(String avatar_Url) {
-        this.avatar_Url = avatar_Url;
-    }
+    private Long gmtCreat;
+    private Long gmtModified;
+    private String avatarUrl;
 
     public Integer getId() {
         return id;
@@ -26,12 +18,12 @@ public class User {
         this.id = id;
     }
 
-    public String getAccount_Id() {
-        return account_Id;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setAccount_Id(String account_Id) {
-        this.account_Id = account_Id;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public String getName() {
@@ -50,31 +42,40 @@ public class User {
         this.token = token;
     }
 
-    public Long getGmt_Creat() {
-        return gmt_Creat;
+    public Long getGmtCreat() {
+        return gmtCreat;
     }
 
-    public void setGmt_Creat(Long gmt_Creat) {
-        this.gmt_Creat = gmt_Creat;
+    public void setGmtCreat(Long gmtCreat) {
+        this.gmtCreat = gmtCreat;
     }
 
-    public Long getGmt_Modified() {
-        return gmt_Modified;
+    public Long getGmtModified() {
+        return gmtModified;
     }
 
-    public void setGmt_Modified(Long gmt_Modified) {
-        this.gmt_Modified = gmt_Modified;
+    public void setGmtModified(Long gmtModified) {
+        this.gmtModified = gmtModified;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", account_Id='" + account_Id + '\'' +
+                ", accountId='" + accountId + '\'' +
                 ", name='" + name + '\'' +
                 ", token='" + token + '\'' +
-                ", gmt_Creat=" + gmt_Creat +
-                ", gmt_Modified=" + gmt_Modified +
+                ", gmtCreat=" + gmtCreat +
+                ", gmtModified=" + gmtModified +
+                ", avatarUrl='" + avatarUrl + '\'' +
                 '}';
     }
 }

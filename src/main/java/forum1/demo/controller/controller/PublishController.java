@@ -40,6 +40,7 @@ public class PublishController {
 
         User user=null;
         Cookie[] cookies = request.getCookies();
+        Question question=null;
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
@@ -47,19 +48,20 @@ public class PublishController {
                      user = userMapper.findToken(value);
                     if (user != null) {
                         request.getSession().setAttribute("user", user);
-                        Question question = new Question();
+                        question = new Question();
                         question.setTitle(title);
                         question.setDescription(description);
                         question.setTag(tag);
                         question.setCreator(user.getId());
                         question.setGmtCreate(System.currentTimeMillis());
                         question.setGmtModified(question.getGmtCreate());
-                        questionMapper.create(question);
                         if ((title==null||title=="")||(description==null||description=="")||(tag==null||tag=="")){
                             model.addAttribute("error","请填写完整所有信息");
                             return "publish";
+                        }else{
+                            questionMapper.create(question);
+                            return "redirect:/";
                         }
-                        return "redirect:/";
                     }
                     break;
                 }

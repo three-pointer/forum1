@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,10 +15,11 @@
     <div class="container-fluid">
 
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">码匠社区</span>
             </button>
-            <a class="navbar-brand" href="#">码匠社区</a>
+            <a class="navbar-brand" href="/">码匠社区</a>
         </div>
 
 
@@ -30,42 +32,45 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" th:if="${session.user!=null}">
-                    <a th:text="${session.user.getName()}" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我<span class="caret"></span></a>
+                    <a th:text="${session.user.getName()}" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">我<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
                         <li><a href="#">个人资料</a></li>
                         <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
-                <li th:if="${session.user==null}"><a href="https://github.com/login/oauth/authorize?client_id=16307334d3f7b7387852&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a></li>
+                <li th:if="${session.user==null}"><a
+                        href="https://github.com/login/oauth/authorize?client_id=16307334d3f7b7387852&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container-fluid"  style="margin:50px;background-color:white" r>
+<div class="container-fluid" style="margin:50px;background-color:white" r>
     <div class="row">
         <form action="publish" method="post">
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2> <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>发起</h2>
-            <hr>
-            <div class="form-group">
-               <h3><label for="title">问题标题（简单扼要）</label></h3>
-                <input  type="text" id="title" name="title" class="form-control" placeholder="问题标题">
-            </div>
-            <div class="form-group" >
-                <h3><label for="description">问题补充（必填请参照右侧提示）</label></h3>
-                <textarea class="form-control" name="description" id="description" rows="20" cols="30"></textarea>
-            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+                <hr>
+                <div class="form-group">
+                    <h3><label for="title">问题标题（简单扼要）</label></h3>
+                    <input type="text" id="title" name="title" class="form-control" placeholder="问题标题">
+                </div>
+                <div class="form-group">
+                    <h3><label for="description">问题补充（必填请参照右侧提示）</label></h3>
+                    <textarea class="form-control" name="description" id="description" rows="20" cols="30"></textarea>
+                </div>
                 <div class="form-group" style="">
-               <h4><label for="tag">添加标签</label></h4>
-                <input type="text" id="tag" name="tag" class="form-control">
+                    <h4><label for="tag">添加标签</label></h4>
+                    <input type="text" id="tag" name="tag" class="form-control">
+                </div>
+                <div style="margin-top:50px;margin-bottom: 10px;> <!--float:right" -->
+                    <button type="submit" class="btn btn-success btn-lg">发布</button>
+                    <label style="float:right;font-size:30px;color:red" th:text="${error}"></label>
+                </div>
             </div>
-           <div style="margin-top:50px;margin-bottom: 10px;> <!--float:right"-->
-               <button type="submit" class="btn btn-success btn-lg" >发布</button>
-            <label  style="float:right;font-size:30px;color:red" th:text="${error}"></label>
-           </div>
-        </div>
         </form>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <h3 style="margin-bottom:40px"> 问题发起指南</h3>

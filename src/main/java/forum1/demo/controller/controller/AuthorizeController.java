@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @Controller
-@Service
 public class AuthorizeController {
 
     @Autowired
@@ -54,10 +53,10 @@ public class AuthorizeController {
             user.setName(githubUser.getName());
             String token = UUID.randomUUID().toString();
             user.setToken(token);
-            user.setAccount_Id(String.valueOf(githubUser.getId()));
-            user.setGmt_Creat(System.currentTimeMillis());
-            user.setGmt_Modified(user.getGmt_Creat());
-            user.setAvatar_Url(githubUser.getAvatar_Url());
+            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setGmtCreat(System.currentTimeMillis());
+            user.setGmtModified(user.getGmtCreat());
+            user.setAvatarUrl(githubUser.getAvatar_url());
             request.getSession().setAttribute("user",githubUser);
             userMapper.insert(user);
             response.addCookie(new Cookie("token",token));

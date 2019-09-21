@@ -1,6 +1,10 @@
-package forum1.demo.controller.Model;
+package forum1.demo.controller.dto;
 
-public class Question {
+import forum1.demo.controller.Model.User;
+import org.apache.ibatis.annotations.Mapper;
+
+public class QuestionDTO
+{
     private  Integer id;
     private  String title;
     private  String description;
@@ -11,6 +15,7 @@ public class Question {
     private  Integer commentcount;
     private  Integer viewcount;
     private  Integer likecount;
+    private  User    user;
 
     public Integer getId() {
         return id;
@@ -92,9 +97,17 @@ public class Question {
         this.likecount = likecount;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
-        return "Question{" +
+        return "QuestionDTO{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
@@ -105,6 +118,7 @@ public class Question {
                 ", commentcount=" + commentcount +
                 ", viewcount=" + viewcount +
                 ", likecount=" + likecount +
+                ", user=" + user +
                 '}';
     }
 }

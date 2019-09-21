@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/mycss.css">
 </head>
-<body>
+<body style="background-color: lightgray">
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
 
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">码匠社区</span>
             </button>
             <a class="navbar-brand" href="#">码匠社区</a>
@@ -32,18 +34,45 @@
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${session.user!=null}"><a th:href="@{publish}">提问</a></li>
                 <li class="dropdown" th:if="${session.user!=null}">
-                    <a th:text="${session.user.getName()}" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我<span class="caret"></span></a>
+                    <a th:text="${session.user.getName()}" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">我<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
                         <li><a href="#">个人资料</a></li>
                         <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
-                <li th:if="${session.user==null}"><a href="https://github.com/login/oauth/authorize?client_id=16307334d3f7b7387852&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a></li>
+                <li th:if="${session.user==null}"><a
+                        href="https://github.com/login/oauth/authorize?client_id=16307334d3f7b7387852&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
+
+<div class="container-fluid" style="margin:50px;background-color:white">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <div class="media" th:each="question:${questions}">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object"  width="50" height="50" th:src="${question.user.avatarUrl}" >
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 th:text="${question.title}"></h4>
+                    <span th:text="${question.description}"></span>  <br>
+                    <span class="text-desc"><span th:text="${question.commentcount}"></span>个回复• <span th:text="${question.viewcount}"></span>次浏览• <span th:text="${question.commentcount}"></span>小时前</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <h2><span>热门话题</span></h2>
+        </div>
+    </div>
+</div>
 </body>
 </html>

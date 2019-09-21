@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-@MapperScan("forum1.demo.controller.mapper")
+@MapperScan(value = "forum1.demo.controller.mapper")
 public class DemoApplication {
 
 	public static void main(String[] args) {
